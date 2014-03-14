@@ -15,6 +15,7 @@
 #define MAGIC_PATTERN 0xAAAAAA5C // magic pattern for trace message parsing. 0x5c is \.
 
 typedef enum {
+	RAW,      // message is to be sent as raw. no packaging is required.
 	ACK,      // message is ack of incoming command
 	RESPONSE, // message is a response to node command
 	PASS,     // message is to be passed through node without capturing
@@ -27,16 +28,5 @@ typedef enum {
 
 	NUM_GLB_MSG_TYPE_TOTAL
 } global_msg_t;
-
-typedef enum {
-	NO_ERROR,			// no error detected
-
-	ARG_ERROR,			// argument does not match desired input
-	SELF_CONTAINED,		// such message is self contained and should not be exposed
-	NOT_HANDLED,		// such routine is not handled
-	IO_ERROR,			// I/O error detected
-	GENERIC_ERROR,		// generic error
-	PTHREAD_ERROR,		// pthread calls failed
-} erl_comm_msg_t;
 
 #endif
